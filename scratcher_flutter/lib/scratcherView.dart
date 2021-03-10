@@ -1,8 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:scratcher/scratcher.dart';
 
 class ScratcherView extends StatelessWidget {
-
   static String routeName = '/scratcherView';
 
   @override
@@ -16,7 +17,7 @@ class ScratcherView extends StatelessWidget {
 }
 
 class AppBody extends StatelessWidget {
-  Future<void> scratchCardDialog(context) {
+  Future<void> scratchCardDialog(BuildContext context, bool won ) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -33,24 +34,21 @@ class AppBody extends StatelessWidget {
                     fontSize: 18),
               ),
             ),
-              content: Scratcher(
-               accuracy: ScratchAccuracy.low,
-               brushSize: 50,
-               child: Container(
-                 height: 300,
-                 width: 300,
-                 alignment: Alignment.center,
-                 child: Text(
-                   'You Won',
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold,
-                     fontSize: 50,
-                     color: Colors.blue,
-                   )
-                 )
-
-               )
-             ),
+            content: Scratcher(
+              accuracy: ScratchAccuracy.low,
+              brushSize: 50,
+              child: Container(
+                height: 300,
+                width: 300,
+                alignment: Alignment.center,
+                child: Text(won ? 'You Won' : 'You lost',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50,
+                      color: Colors.blue,
+                    )),
+              ),
+            ),
           );
         });
   }
@@ -74,7 +72,12 @@ class AppBody extends StatelessWidget {
               fontSize: 25,
             ),
           ),
-          onPressed: () => scratchCardDialog(context),
+          onPressed: () {
+            var value = Random();
+            var number = value.nextInt(100);
+
+            scratchCardDialog(context, number < 20);
+          },
         ));
   }
 }
