@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:scratcher_flutter/scratcherView.dart';
-
+import 'package:scratcher_flutter/logIn.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -44,6 +44,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lottery'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.login_rounded),
+            onPressed: () {
+              Navigator.of(context)
+                  .pushNamed(LogIn.routeName);
+            },
+          )
+        ]
       ),
       body: Padding(
         padding: EdgeInsets.all(25.0),

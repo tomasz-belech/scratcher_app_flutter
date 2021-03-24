@@ -1,8 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:scratcher_flutter/scratcherView.dart';
 import 'package:scratcher_flutter/homePage.dart';
+import 'package:scratcher_flutter/logIn.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -17,9 +21,8 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: {
         ScratcherView.routeName: (context) => ScratcherView(),
+        LogIn.routeName: (context) => LogIn(),
       },
     );
   }
 }
-
-
