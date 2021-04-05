@@ -61,25 +61,6 @@ class _LogInState extends State<LogIn> {
               child: MaterialButton(
                 onPressed: () async {
                   bool shouldNavigate =
-                      await register(_emailField.text, _passwordField.text);
-                  if (shouldNavigate) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoggedWiew()));
-                  }
-                },
-                child: Text('Register'),
-              ),
-            ),
-            Container(
-              width: 300,
-              height: 45,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                color: Colors.white,
-              ),
-              child: MaterialButton(
-                onPressed: () async {
-                  bool shouldNavigate =
                       await signIn(_emailField.text, _passwordField.text);
                   if (shouldNavigate) {
                     Navigator.push(context,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:scratcher_flutter/scratcherView.dart';
 import 'package:scratcher_flutter/logIn.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -10,11 +11,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
+  TextEditingController _emailController = TextEditingController();
+
   bool isChecked = false;
 
   void validate() {
     if (formkey.currentState.validate()) {
-      print('Validated');
+      print('Validated ${_emailController.value}');
     } else {
       print('Not Validated');
     }
@@ -42,18 +45,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lottery'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.login_rounded),
-            onPressed: () {
-              Navigator.of(context)
-                  .pushNamed(LogIn.routeName);
-            },
-          )
-        ]
-      ),
+      appBar: AppBar(title: Text('Lottery'), actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.login_rounded),
+          onPressed: () {
+            Navigator.of(context).pushNamed(LogIn.routeName);
+          },
+        )
+      ]),
       body: Padding(
         padding: EdgeInsets.all(25.0),
         child: Center(
@@ -63,6 +62,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(), labelText: 'Email'),
                   validator: MultiValidator([
@@ -105,8 +105,11 @@ class _HomePageState extends State<HomePage> {
                     onPressed: isChecked
                         ? () {
                             validate();
-                            Navigator.of(context)
-                                .pushNamed(ScratcherView.routeName);
+                            Navigator.pushNamed(
+                                context, ScratcherView.routeName,
+                                arguments: {
+                                  'email': _emailController.text
+                                });
                           }
                         : null,
                     child: Text(

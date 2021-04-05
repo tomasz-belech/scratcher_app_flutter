@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "659809911241",
+    "project_id": "scratcher-app-7ed1e",
+    "storage_bucket": "scratcher-app-7ed1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659809911241:android:96f31f9f6735abea246818",
+        "android_client_info": {
+          "package_name": "com.example.scratcher_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659809911241-hsums8t1is3s21udp4hps800mepnlqqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA359lIe1e25Y7tPeXPlx7_yl4c8JuiB7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659809911241-hsums8t1is3s21udp4hps800mepnlqqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
